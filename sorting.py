@@ -35,3 +35,24 @@ def selection_sort(values):
         minimum = min(range(i, len(data)), key=data.__getitem__)
         data[i], data[minimum] = data[minimum], data[i]
     return data
+
+
+def cocktail_sort(values):
+    """Двусторонняя сортировка пузырьком (шейкерная)."""
+    data = list(values)
+    left, right = 0, len(data) - 1
+    while left < right:
+        swapped = False
+        for i in range(left, right):
+            if data[i] > data[i + 1]:
+                data[i], data[i + 1] = data[i + 1], data[i]
+                swapped = True
+        right -= 1
+        for i in range(right, left, -1):
+            if data[i - 1] > data[i]:
+                data[i], data[i - 1] = data[i - 1], data[i]
+                swapped = True
+        left += 1
+        if not swapped:
+            break
+    return data
