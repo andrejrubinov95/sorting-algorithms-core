@@ -26,3 +26,12 @@ def insertion_sort(values):
             j -= 1
         data[j + 1] = current
     return data
+
+
+def selection_sort(values):
+    """Сортировка выбором; возвращает новый список."""
+    data = list(values)
+    for i in range(len(data)):
+        minimum = min(range(i, len(data)), key=data.__getitem__)
+        data[i], data[minimum] = data[minimum], data[i]
+    return data
